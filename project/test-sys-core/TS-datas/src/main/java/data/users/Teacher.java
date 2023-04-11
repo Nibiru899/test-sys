@@ -7,12 +7,10 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("teacher")
 public class Teacher extends User {
-    @OneToMany
-    @JoinColumn(name = "groups")
+    @ManyToMany
     private List<Group> groups;
 
-    @OneToMany
-    @JoinColumn(name = "subject")
+    @ManyToMany
     private List<Subject> subjects;
 
     public List<Group> getGroups() {

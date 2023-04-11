@@ -1,6 +1,8 @@
 package data.forming;
 
 import data.beans.Bean;
+import data.service.Picture;
+
 import javax.persistence.*;
 
 import java.util.List;
@@ -11,9 +13,13 @@ public class Question extends Bean {
     @Column(name = "text")
     private String text;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany
     @JoinColumn(name = "answers")
     private List<Answer> answers;
+
+    @ManyToOne
+    @JoinColumn(name = "picture")
+    private Picture picture;
 
     public String getText() {
         return text;
@@ -29,5 +35,13 @@ public class Question extends Bean {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 }

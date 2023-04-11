@@ -15,10 +15,6 @@ public class Answer extends Bean {
     @Column(name = "correct")
     private Boolean correct;
 
-    @ManyToOne
-    @JoinColumn(name = "question")
-    private Question question;
-
     public Boolean getCorrect() {
         return correct;
     }
