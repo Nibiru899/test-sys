@@ -1,12 +1,13 @@
 package data.forming;
 
+import data.beans.Bean;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "competity")
-public class Competity {
+public class Competity extends Bean {
     @Column(name = "code")
     private String code;
     @Column(name = "name")

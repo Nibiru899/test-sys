@@ -1,12 +1,13 @@
 package data.forming;
 
+import data.beans.Bean;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "question")
-public class Question {
+public class Question extends Bean {
     @Column(name = "text")
     private String text;
 

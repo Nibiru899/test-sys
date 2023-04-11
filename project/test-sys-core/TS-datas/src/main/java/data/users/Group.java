@@ -1,12 +1,13 @@
 package data.users;
 
+import data.beans.Bean;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "group")
-public class Group {
+public class Group extends Bean {
     @Column(name = "code")
     private String code;
     @Column(name = "name")

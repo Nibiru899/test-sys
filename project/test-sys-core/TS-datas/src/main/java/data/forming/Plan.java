@@ -1,5 +1,6 @@
 package data.forming;
 
+import data.beans.Bean;
 import data.users.Group;
 import data.users.User;
 import jakarta.persistence.*;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "plan")
-public class Plan {
+public class Plan extends Bean {
     @Column(name = "name")
     private String name;
     @Column(name = "starting")

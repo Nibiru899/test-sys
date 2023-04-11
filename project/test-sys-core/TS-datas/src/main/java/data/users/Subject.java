@@ -1,5 +1,6 @@
 package data.users;
 
+import data.beans.Bean;
 import data.forming.Competity;
 import jakarta.persistence.*;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "subject")
-public class Subject {
+public class Subject extends Bean {
     @Column(name = "name")
     private String name;
 

@@ -1,12 +1,13 @@
 package data.service;
 
+import data.beans.Bean;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "picture")
-public class Picture {
+public class Picture extends Bean {
     @Column(name = "filename")
     private String fileName;
     @Column(name = "name")

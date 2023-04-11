@@ -1,5 +1,6 @@
 package data.testing;
 
+import data.beans.Bean;
 import data.forming.Plan;
 import jakarta.persistence.*;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "result")
-public class Result {
+public class Result extends Bean {
     @Column(name = "date")
     private LocalDate date;
     @Column(name = "max")

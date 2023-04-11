@@ -1,5 +1,6 @@
 package data.testing;
 
+import data.beans.Bean;
 import data.forming.Answer;
 import jakarta.persistence.*;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("ca")
-public class UserConnectingAnswer {
+public class UserConnectingAnswer extends UserAnswer{
     @OneToMany
     @JoinColumn(name = "first")
     private List<Answer> first;

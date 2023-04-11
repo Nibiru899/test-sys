@@ -1,5 +1,6 @@
 package data.forming;
 
+import data.beans.Bean;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,7 +8,7 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "disc")
 @DiscriminatorValue(value = "simple")
-public class Answer {
+public class Answer extends Bean {
     @Column(name = "text")
     private String text;
     @Column(name = "correct")
