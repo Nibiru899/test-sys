@@ -1,6 +1,6 @@
 package data.users;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package data.forming;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue(value = "connected")

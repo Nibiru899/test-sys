@@ -2,7 +2,7 @@ package data.testing;
 
 import data.beans.Bean;
 import data.forming.Plan;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Result extends Bean {
     private Integer current;
     @Column(name = "result")
     private Integer result;
-    @OneToOne
+    @ManyToOne
     private Plan plan;
     @OneToMany
     @JoinColumn(name = "answers")

@@ -2,7 +2,7 @@ package data.users;
 
 import data.beans.Bean;
 import data.forming.Competity;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 

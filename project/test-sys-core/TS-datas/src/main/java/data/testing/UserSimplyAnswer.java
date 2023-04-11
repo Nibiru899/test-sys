@@ -1,7 +1,7 @@
 package data.testing;
 
 import data.forming.Answer;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue("sa")

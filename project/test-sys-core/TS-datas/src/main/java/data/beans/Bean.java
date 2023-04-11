@@ -1,11 +1,11 @@
 package data.beans;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+
+import javax.persistence.*;
 
 @MappedSuperclass
 public class Bean {
-    @Column(name = "id")
+    @Id
     private Long id;
 
     public void setId(Long id) {

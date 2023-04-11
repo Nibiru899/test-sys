@@ -1,11 +1,10 @@
 package data.users;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 @Entity
 @DiscriminatorValue("student")
 public class Student extends User{
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
 

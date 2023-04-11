@@ -1,7 +1,7 @@
 package data.forming;
 
 import data.beans.Bean;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class Question extends Bean {
     @Column(name = "text")
     private String text;
 
-    @OneToMany
+    @OneToMany(mappedBy = "question")
     @JoinColumn(name = "answers")
     private List<Answer> answers;
 

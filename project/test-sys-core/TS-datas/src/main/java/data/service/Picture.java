@@ -1,9 +1,7 @@
 package data.service;
 
 import data.beans.Bean;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "picture")

@@ -1,7 +1,8 @@
 package data.forming;
 
 import data.beans.Bean;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "answer")
@@ -14,7 +15,8 @@ public class Answer extends Bean {
     @Column(name = "correct")
     private Boolean correct;
 
-    @OneToMany(mappedBy = "answers")
+    @ManyToOne
+    @JoinColumn(name = "question")
     private Question question;
 
     public Boolean getCorrect() {

@@ -3,9 +3,9 @@ package data.forming;
 import data.beans.Bean;
 import data.users.Group;
 import data.users.User;
-import jakarta.persistence.*;
-import org.graalvm.compiler.lir.LIRInstruction;
 
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class Plan extends Bean {
     private List<Theme> themes;
     @ManyToMany
     private List<Group> takePart;
-    @Column(name = "counts")
+    @ElementCollection
     private List<Integer> counts;
 
 

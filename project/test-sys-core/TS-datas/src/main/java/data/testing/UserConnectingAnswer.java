@@ -2,7 +2,7 @@ package data.testing;
 
 import data.beans.Bean;
 import data.forming.Answer;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 

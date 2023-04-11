@@ -1,7 +1,7 @@
 package data.forming;
 
 import data.beans.Bean;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 
