@@ -13,11 +13,11 @@ public class Question extends Bean {
     @Column(name = "text")
     private String text;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "answers")
     private List<Answer> answers;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "picture")
     private Picture picture;
 

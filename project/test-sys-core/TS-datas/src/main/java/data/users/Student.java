@@ -4,7 +4,7 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue("student")
 public class Student extends User{
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private Group group;
 

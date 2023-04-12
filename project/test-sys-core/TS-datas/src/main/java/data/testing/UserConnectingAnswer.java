@@ -9,10 +9,10 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("ca")
 public class UserConnectingAnswer extends UserAnswer{
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "first")
     private List<Answer> first;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "second")
     private List<Answer> second;
 

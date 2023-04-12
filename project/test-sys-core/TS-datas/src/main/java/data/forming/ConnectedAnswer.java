@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue(value = "connected")
 public class ConnectedAnswer extends Answer{
-    @OneToOne(mappedBy = "connected_id")
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "connected_id")
     @JoinColumn(name = "connected_id")
     private ConnectedAnswer connectedAnswer;
 

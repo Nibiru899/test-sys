@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue("sa")
 public class UserSimplyAnswer extends UserAnswer {
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "answer")
     private Answer answer;
 
