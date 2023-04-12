@@ -4,7 +4,7 @@ import data.beans.Bean;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "group")
+@Table(name = "group", schema = "public")
 public class Group extends Bean {
     @Column(name = "code")
     private String code;

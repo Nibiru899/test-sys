@@ -18,7 +18,7 @@ public class Plan extends Bean {
     private LocalDate starting;
     @Column(name = "ending")
     private LocalDate ending;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author")
     private User author;
     @ManyToMany(fetch = FetchType.LAZY)

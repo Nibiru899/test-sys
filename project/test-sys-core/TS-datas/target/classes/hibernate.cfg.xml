@@ -7,11 +7,12 @@
     <session-factory>
         <property name="connection.url">jdbc:postgresql://localhost:5432/test-sys</property>
         <property name="connection.driver-class">org.postgresql.Driver</property>
-        <property name="connection.username">system2</property>
+        <property name="connection.username">postgres</property>
         <property name="connection.password">masterkey</property>
 
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
     </session-factory>
 </hibernate-configuration>
