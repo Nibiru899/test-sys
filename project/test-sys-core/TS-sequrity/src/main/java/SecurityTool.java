@@ -1,11 +1,15 @@
-import data.users.Password;
-import data.users.User;
+import data.users.*;
 
 import org.jasypt.util.password.BasicPasswordEncryptor;
 
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class SecurityTool {
+
+
+
 
     private static String encode(String pass) {
         return new BasicPasswordEncryptor().encryptPassword(pass);
@@ -18,6 +22,49 @@ public class SecurityTool {
         return new BasicPasswordEncryptor().checkPassword(pass, user.getPassword().getText());
     }
 
+
+
+    public static void linkToSubject(Long subj,String login,boolean del) {
+        BDWorker worker = new BDWorker();
+        User user = worker.find(User.class,"login = '" + login +"'");
+        if (!(user instanceof Teacher)){
+            return;
+        }
+        Teacher teacher = (Teacher) user;
+        List<Subject> l = teacher.getSubjects();
+        if (del){
+            l.stream().filter(e-> e.getId()!=subj).collect(Collectors.toList());
+        } else {
+            l.add(worker.find(Subject.class,subj));
+        }
+        teacher.setSubjects(l);
+    }
+
+    public static boolean linkToGroup(Long groupId,String login,boolean del) {
+        BDWorker worker = new BDWorker();
+
+        User user = worker.find(User.class,"login = '" + login +"'");
+        if (user instanceof Student) {
+            Student student = ((Student) user);
+            if (del){
+                student.setGroup(null);
+            } else {
+                student.setGroup(worker.find(Group.class,groupId));
+            }
+        }
+        if (user instanceof Teacher) {
+            Teacher teacher = (Teacher) user;
+            List<Group> l = teacher.getGroups();
+            if (del){
+                l.stream().filter(e-> e.getId()!=groupId).collect(Collectors.toList());
+            } else {
+                l.add(worker.find(Group.class,groupId));
+            }
+            teacher.setGroups(l);
+        }
+        worker.updateOrAdd(user);
+        return true;
+    }
     public static boolean authorise (String login, String password) {
         BDWorker worker = new BDWorker();
         return checkPass(worker.find(User.class,"login = '" + login +"'"),password);
@@ -32,12 +79,22 @@ public class SecurityTool {
         worker.delete(user);
         return true;
     }
-    public static Long register(String name,String surname,String fatherName,String login,String password) {
+    public static Long register(String name,String surname,String fatherName,String login,String password,String level) {
         BDWorker worker = new BDWorker();
         if (worker.find(User.class,"login = '" + login + "'") != null){
             return Long.valueOf(-1);
         }
-        User user = new User();
+        User user = null;
+        if (level.equals("TEACHER")){
+            user = new Teacher();
+        } else {
+            if (level.equals("STUDENT")){
+                user = new Student();
+            } else {
+                user = new User();
+            }
+        }
+
         user.setName(name);
         user.setSurName(surname);
         user.setFatherName(fatherName);
