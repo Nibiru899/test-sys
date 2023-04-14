@@ -16,8 +16,9 @@ public class User extends Bean {
     private String fatherName;
     @Column(name = "login")
     private String login;
-    @Column(name = "pass")
-    private String password;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "password")
+    private Password password;
 
     public String getName() {
         return name;
@@ -28,7 +29,7 @@ public class User extends Bean {
     public String getLogin() {
         return login;
     }
-    public String getPassword() {
+    public Password getPassword() {
         return password;
     }
     public String getSurName() {
@@ -46,7 +47,7 @@ public class User extends Bean {
     public void setLogin(String login) {
         this.login = login;
     }
-    public void setPassword(String password) {
+    public void setPassword(Password password) {
         this.password = password;
     }
 }

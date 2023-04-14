@@ -12,7 +12,7 @@ public class Subject extends Bean {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "competities_ids")
     private List<Competity> competities;
 

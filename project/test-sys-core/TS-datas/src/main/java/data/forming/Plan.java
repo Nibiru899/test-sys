@@ -18,14 +18,14 @@ public class Plan extends Bean {
     private LocalDate starting;
     @Column(name = "ending")
     private LocalDate ending;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "author")
     private User author;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<User> privateAccess;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<Theme> themes;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<Group> takePart;
     @ElementCollection
     private List<Integer> counts;

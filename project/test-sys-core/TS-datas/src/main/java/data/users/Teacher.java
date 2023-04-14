@@ -7,10 +7,10 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("teacher")
 public class Teacher extends User {
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<Group> groups;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<Subject> subjects;
 
     public List<Group> getGroups() {

@@ -10,6 +10,10 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "disc")
 @DiscriminatorValue(value = "simple")
 public class Answer extends Bean {
+    public Answer(){
+        correct = false;
+    }
+
     @Column(name = "text")
     private String text;
     @Column(name = "correct")

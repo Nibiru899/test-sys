@@ -11,11 +11,11 @@ public class Theme extends Bean {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "competity")
     private List<Competity> competity;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "questions")
     private List<Question> questions;
 

@@ -18,9 +18,9 @@ public class Result extends Bean {
     private Integer current;
     @Column(name = "result")
     private Integer result;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private Plan plan;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "answers")
     private List<UserAnswer> userAnswers;
 
