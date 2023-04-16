@@ -29,10 +29,12 @@ public class TestingTool {
                     }
                 }
             }
-            if (answer instanceof UserConnectingAnswer) {
-                UserConnectingAnswer uca = (UserConnectingAnswer) answer;
-                //todo хуйня ебаная
-            }
+//            if (answer instanceof UserConnectingAnswer) {
+//                UserConnectingAnswer uca = (UserConnectingAnswer) answer;
+//                //todo хуйня ебаная
+//            }
         }
+        new BDWorker().updateOrAdd(res);
+        return res;
     }
 }
