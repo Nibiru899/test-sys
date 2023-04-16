@@ -11,21 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FormerTool {
-     private static<T> T fromString(Class<T> cls,String json) {
-        try {
-            return new ObjectMapper().readValue(json,cls);
-        } catch (JsonProcessingException e) {
-            return null;
-        }
-    }
 
-    private static String toJson(Object object){
-        try {
-            return new ObjectMapper().writeValueAsString(object);
-        } catch (JsonProcessingException e) {
-            return null;
-        }
-    }
 
     private static Class getClass(String type){
         switch (type){
@@ -53,7 +39,7 @@ public class FormerTool {
 
     public static void update(String type,String json){
         Class cls = getClass(type);
-        Object object = fromString(cls,json);
+        Object object = Jsoner.fromString(cls,json);
         if (object!=null){
             new BDWorker().updateOrAdd(object);
         }
@@ -64,7 +50,11 @@ public class FormerTool {
     }
 
     public static List<String> getAll(String type,String filter){
-         return (List<String>) new BDWorker().getObjects(getClass(type),filter).stream().map(e->toJson(e)).collect(Collectors.toList());
+         return (List<String>) new BDWorker().getObjects(getClass(type),filter).stream().map(e->Jsoner.toJson(e)).collect(Collectors.toList());
+    }
+
+    public static String get(String type,String filter) {
+         return Jsoner.toJson(new BDWorker().find(getClass(type),filter));
     }
 
 

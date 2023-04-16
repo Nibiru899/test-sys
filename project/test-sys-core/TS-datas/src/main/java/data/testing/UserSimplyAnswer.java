@@ -2,19 +2,21 @@ package data.testing;
 
 import data.forming.Answer;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("sa")
 public class UserSimplyAnswer extends UserAnswer {
-    @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name = "answer")
-    private Answer answer;
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name = "answers")
+    private List<Answer> answers;
 
-    public Answer getAnswer() {
-        return answer;
+
+    public List<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setAnswer(Answer answer) {
-        this.answer = answer;
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }
