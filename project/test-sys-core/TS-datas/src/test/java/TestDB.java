@@ -1,19 +1,14 @@
-import bdWorkers.SessionFactoryFactory;
-import data.forming.Answer;
-import data.forming.Question;
+import data.forming.Questions.Answer;
+import data.forming.Questions.Question;
+import data.forming.Questions.SimpleQuestion;
 import data.users.Group;
 
-import org.hibernate.criterion.Restrictions;
-
-import org.hibernate.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class TestDB {
     @BeforeAll
@@ -77,14 +72,14 @@ public class TestDB {
         answer2.setCorrect(true);
         answer3.setText("ans3");
 
-        Question question = new Question();
+        SimpleQuestion question = new SimpleQuestion();
         question.setText("text");
         question.setAnswers(Arrays.asList(answer1, answer2, answer3));
 
         BDWorker worker = new BDWorker();
         worker.updateOrAdd(question);
 
-        Question question2 = worker.find(Question.class,question.getId());
+        SimpleQuestion question2 = worker.find(SimpleQuestion.class,question.getId());
 
         Assertions.assertEquals(question.getText(),question2.getText());
         Assertions.assertEquals(question.getAnswers().get(0).getText(),question2.getAnswers().get(0).getText());

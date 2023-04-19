@@ -1,6 +1,8 @@
 package data.users;
 
 import data.beans.Bean;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "password")
+@Getter @Setter
 public class Password extends Bean {
     Password(){
 
@@ -20,11 +23,5 @@ public class Password extends Bean {
         this.text = text;
     }
 
-    public String getText() {
-        return text;
-    }
 
-    public void setText(String text) {
-        this.text = text;
-    }
 }

@@ -1,6 +1,3 @@
-import data.forming.Answer;
-import data.forming.Question;
-import data.users.Group;
 import data.users.Password;
 import data.users.User;
 import org.junit.jupiter.api.*;
@@ -23,7 +20,7 @@ public class TestSequrityTool {
     @Test
     @Order(1)
     public void register(){
-        Long id = SecurityTool.register("Иван","Иванов", "Иванов","vany_OK_2007","secretPass321!");
+        Long id = SecurityTool.register("Иван","Иванов", "Иванов","vany_OK_2007","secretPass321!","STUDENT");
         //есть аккаунт
         BDWorker worker = new BDWorker();
         User user = worker.find(User.class,"login = 'vany_OK_2007'");
@@ -33,7 +30,7 @@ public class TestSequrityTool {
         Assertions.assertNull(worker.find(Password.class,"text = ''"));
         Assertions.assertTrue(id != -1);
         Assertions.assertFalse(
-                SecurityTool.register("Иasdван","Иваsadasdнов", "Ивasdанов","vany_OK_2007","asdasd") != -1
+                SecurityTool.register("Иasdван","Иваsadasdнов", "Ивasdанов","vany_OK_2007","asdasd","STUDENT") != -1
         );
     }
 

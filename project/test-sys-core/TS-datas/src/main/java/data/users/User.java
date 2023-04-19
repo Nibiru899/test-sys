@@ -1,12 +1,26 @@
 package data.users;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import data.beans.Bean;
+import data.forming.Questions.ConnectingQuestions;
+import data.forming.Questions.SimpleQuestion;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "disc")
+@Getter @Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Teacher.class, name = "Teacher"),
+
+        @JsonSubTypes.Type(value = Student.class, name = "Student") }
+)
 public class User extends Bean {
     @Column(name = "name")
     private String name;
@@ -20,34 +34,4 @@ public class User extends Bean {
     @JoinColumn(name = "password")
     private Password password;
 
-    public String getName() {
-        return name;
-    }
-    public String getFatherName() {
-        return fatherName;
-    }
-    public String getLogin() {
-        return login;
-    }
-    public Password getPassword() {
-        return password;
-    }
-    public String getSurName() {
-        return surName;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setSurName(String surName) {
-        this.surName = surName;
-    }
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
-    }
-    public void setLogin(String login) {
-        this.login = login;
-    }
-    public void setPassword(Password password) {
-        this.password = password;
-    }
 }

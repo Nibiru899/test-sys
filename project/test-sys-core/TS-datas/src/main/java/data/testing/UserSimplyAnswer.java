@@ -1,22 +1,17 @@
 package data.testing;
 
-import data.forming.Answer;
+import data.forming.Questions.Answer;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @DiscriminatorValue("sa")
+@Getter @Setter
 public class UserSimplyAnswer extends UserAnswer {
-    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-    @JoinColumn(name = "answers")
+    @ManyToMany
+    @JoinColumn(name = "ans")
     private List<Answer> answers;
-
-
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
 }

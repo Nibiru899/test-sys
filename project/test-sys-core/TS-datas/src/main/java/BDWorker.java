@@ -11,9 +11,11 @@ public class BDWorker {
         session = SessionFactoryFactory.getSessionFactory().openSession();
     }
 
+
+
     private Query createQuery(Class cls,String filter){
 
-        String query = "FROM " + cls.getSimpleName()+ " AS bean ";
+        String query = "FROM " + cls.getSimpleName() + " AS bean ";
         if (!filter.isEmpty()) {
             query += " WHERE " + filter;
         }
@@ -54,6 +56,7 @@ public class BDWorker {
             return null;
         }
     }
+
 
     public <T> Long updateOrAdd(T object){
         session.getTransaction().begin();

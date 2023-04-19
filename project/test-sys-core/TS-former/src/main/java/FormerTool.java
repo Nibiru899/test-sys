@@ -1,9 +1,7 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import data.forming.Competity;
-import data.forming.Plan;
-import data.forming.Question;
-import data.forming.Theme;
+import data.forming.Themes.Competity;
+import data.forming.Plans.Plan;
+import data.forming.Questions.Question;
+import data.forming.Themes.Theme;
 import data.users.Group;
 import data.users.Subject;
 
@@ -17,9 +15,6 @@ public class FormerTool {
         switch (type){
             case "Theme":{
                 return Theme.class;
-            }
-            case "Question":{
-                return Question.class;
             }
             case "Plan":{
                 return Plan.class;

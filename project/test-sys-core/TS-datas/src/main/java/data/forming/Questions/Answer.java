@@ -1,6 +1,8 @@
-package data.forming;
+package data.forming.Questions;
 
 import data.beans.Bean;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -9,6 +11,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "disc")
 @DiscriminatorValue(value = "simple")
+@Getter @Setter
 public class Answer extends Bean {
     public Answer(){
         correct = false;
@@ -19,19 +22,4 @@ public class Answer extends Bean {
     @Column(name = "correct")
     private Boolean correct;
 
-    public Boolean getCorrect() {
-        return correct;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setCorrect(Boolean correct) {
-        this.correct = correct;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 }
