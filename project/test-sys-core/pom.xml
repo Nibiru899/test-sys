@@ -9,10 +9,8 @@
     </parent>
     <packaging>pom</packaging>
     <modules>
-        <module>TS-sequrity</module>
-        <module>TS-former</module>
         <module>TS-datas</module>
-        <module>TS-testing</module>
+        <module>TS-bl</module>
     </modules>
     <dependencies>
         <dependency>

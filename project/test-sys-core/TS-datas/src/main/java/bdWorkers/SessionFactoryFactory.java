@@ -2,13 +2,6 @@ package bdWorkers;
 
 
 import data.beans.Bean;
-import data.forming.*;
-import data.service.Picture;
-import data.testing.Result;
-import data.testing.UserAnswer;
-import data.testing.UserConnectingAnswer;
-import data.testing.UserSimplyAnswer;
-import data.users.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

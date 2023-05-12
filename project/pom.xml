@@ -8,6 +8,11 @@
     <artifactId>test-sys</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiller.source>1.11</maven.compiller.source>
+        <maven.compiller.target>1.11</maven.compiller.target>
+    </properties>
     <modules>
         <module>test-sys-core</module>
         <module>test-sys-web</module>
