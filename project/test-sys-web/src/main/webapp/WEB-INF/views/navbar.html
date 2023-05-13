@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li  class="nav-item active">
+                <a class="nav-link disabled" href="#">Личный кабинет</a>
+            </li>
+            <li class="nav-item active" th:if="${navbar-showThemes}">
+                <a class="nav-link disabled" href="#">Темы</a>
+            </li>
+            <li class="nav-item active" th:if="${navbar-showPlans}">
+                <a class="nav-link disabled" href="#">Планы</a>
+            </li>
+            <li class="nav-item active" th:if="${navbar-showTests}">
+                <a class="nav-link disabled" href="#">Тесты</a>
+            </li>
+            <li class="nav-item active" th:if="${navbar-showStatistic}">
+                <a class="nav-link disabled" href="#">Статистика</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link disabled" href="#">Выйти</a>
+            </li>
+        </ul>
+    </div>
+</nav>
