@@ -5,8 +5,11 @@ import data.beans.Bean;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.postgresql.Driver;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
+
+import java.sql.DriverManager;
 
 public class SessionFactoryFactory {
     private static SessionFactory sessionFactory;
@@ -21,8 +24,7 @@ public class SessionFactoryFactory {
                 reflections.getSubTypesOf(Bean.class).stream().forEach(cls ->{
                     configuration.addAnnotatedClass(cls);
                 });
-
-
+                DriverManager.registerDriver(new Driver());
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

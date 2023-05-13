@@ -4,6 +4,8 @@ import data.forming.Questions.Question;
 import data.forming.Questions.SimpleQuestion;
 import data.users.Group;
 
+import data.users.Password;
+import data.users.Teacher;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

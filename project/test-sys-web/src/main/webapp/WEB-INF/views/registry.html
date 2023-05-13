@@ -63,6 +63,9 @@
             margin-top: 40px;
             margin-bottom: 40px;
         }
+        .form-group-container{
+            margin-bottom: 40px;
+        }
 
 </style>
 <body>
@@ -73,6 +76,54 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 <h1 class="headerH1 text-start ">Система дистанционного тестирования</h1>
+<section class="loginSec">
+    <div class="container">
+        <div class="row">
+            <div class="col logContainer">
+                <div class="formHolder text-center">
+                    <h2 class="headerH2 text-center ">Регистрация</h2>
+                    <form>
+                        <div class="form-group-container">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" placeholder="Имя">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="surname" placeholder="Фамилия">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="fathername" placeholder="Отчество">
+                            </div>
+                        </div>
+                        <div class="form-group-container">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="login" placeholder="Логин">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password" placeholder="Ваш пароль">
+                            </div>
+                            <div class="form-group">
+                                <select class="custom-select">
+                                    <option selected>Тип пользователя(тест)</option>
+                                    <option value="1">Учащийся</option>
+                                    <option value="2">Преподаватель</option>
+                                    <option value="3">Администратор</option>
+                                </select>
+                            </div>
 
+                        </div>
+                        <div th:switch="${wrong}">
+                            <label th:case="true" class="label-wrong" th:text="${error}"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-block btn-primary" value="Зарегистрироваться">
+                        </div>
+                    </form>
+                    <label class="subLabel">Уже есть аккаунт? <a href="./login">Войти</a></label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

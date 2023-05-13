@@ -13,14 +13,16 @@ public class SecurityTool {
 
 
     private static String encode(String pass) {
-        return new BasicPasswordEncryptor().encryptPassword(pass);
+        return pass;
+        //return new BasicPasswordEncryptor().encryptPassword(pass);
     }
 
     private static boolean checkPass(User user, String pass) {
         if (user == null){
             return false;
         }
-        return new BasicPasswordEncryptor().checkPassword(pass, user.getPassword().getText());
+        return user.getPassword().getText().equals(pass);
+//        return new BasicPasswordEncryptor().checkPassword(pass, user.getPassword().getText());
     }
 
 
@@ -80,11 +82,27 @@ public class SecurityTool {
         worker.delete(user);
         return true;
     }
-    public static Long register(String name,String surname,String fatherName,String login,String password,String level) {
+    public static String register(String name,String surname,String fatherName,String login,String password,String level) {
         BDWorker worker = new BDWorker();
-        if (worker.find(User.class,"login = '" + login + "'") != null){
-            return Long.valueOf(-1);
+        if (name==null){
+            return "Введено пустое имя";
         }
+        if (surname==null){
+            return "Введена пустая фамилия";
+        }
+        if (fatherName==null){
+            return "Введено пустое отчество";
+        }
+        if (login==null){
+            return "Введен пустой логин";
+        }
+        if (password==null){
+            return "Введен пустой пароль";
+        }
+        if (worker.find(User.class,"login = '" + login + "'") != null){
+            return "Пользователь с таким логином уже зарегистрирован";
+        }
+
         User user = null;
         if (level.equals("TEACHER")){
             user = new Teacher();
@@ -101,7 +119,8 @@ public class SecurityTool {
         user.setFatherName(fatherName);
         user.setLogin(login);
         user.setPassword(new Password(encode(password)));
-        return worker.updateOrAdd(user);
+        worker.updateOrAdd(user);
+        return null;
     }
 
     public static boolean changePass(String login,String old, String neww){
