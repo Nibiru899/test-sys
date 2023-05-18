@@ -1,0 +1,43 @@
+body {
+             background: #ededed;
+             font-family: "PT Sans", PTsans, Arial, sans-serif;
+}
+.logoText,.logoText:hover,.logoText:visited {
+            background: rgb(164, 35, 56);
+            font-size: 24pt;
+            color: #fff;
+            padding:0px;
+            width:100%;
+            margin:0px;
+            padding: 0px;
+            padding-left:30px;
+}
+.container-fluid{
+    padding:0px;
+}
+.navbarContainer{
+    margin-top:10px;
+    margin-bottom:2 0px;
+    width:100%;
+    background:white;
+    margin:0px;
+}
+.links, .links:hover, .links:visited{
+    color:black;
+}
+
+.navItem{
+    border: 1px solid #dddddd;
+    padding:5px;
+    height:100%;
+    font-size: 16pt;
+}
+
+.navItem:hover{
+    background:#dddddd;
+}
+
+.margin-zero-padding-zero{
+    margin:0px;
+    padding:0px;
+}

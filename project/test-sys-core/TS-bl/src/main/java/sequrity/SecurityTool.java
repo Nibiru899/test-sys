@@ -68,9 +68,20 @@ public class SecurityTool {
         worker.updateOrAdd(user);
         return true;
     }
-    public static boolean authorise (String login, String password) {
+    public static String authorise (String login, String password) {
         BDWorker worker = new BDWorker();
-        return checkPass(worker.find(User.class,"login = '" + login +"'"),password);
+        User user = worker.find(User.class,"login = '" + login +"'");
+        if (checkPass(user,password)){
+            if (user instanceof Teacher){
+                return "TEACHER";
+            }
+            if (user instanceof Student){
+                return "STUDENT";
+            }
+            return "ADMINISTRATOR";
+        } else {
+            return null;
+        }
     }
 
     public static boolean delAcc (String login,String password){

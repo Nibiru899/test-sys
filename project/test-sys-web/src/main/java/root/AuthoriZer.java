@@ -1,19 +1,15 @@
 package root;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import data.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.WebRequest;
 import sequrity.SecurityTool;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.net.http.HttpRequest;
 
 
 @Controller
@@ -21,22 +17,43 @@ public class AuthoriZer {
     @Autowired
     HttpSession session;
 
+
+    private void configureNavbar(String role){
+        boolean isTeacherOrAdmin = role.equals("TEACHER") || role == "ADMINISTRATOR";
+        session.setAttribute("hideCabinet",false);
+        session.setAttribute("hideThemes",isTeacherOrAdmin);
+        session.setAttribute("hidePlans",isTeacherOrAdmin);
+        session.setAttribute("hideTests",false);
+        session.setAttribute("hideStats",isTeacherOrAdmin);
+    }
+
+    private void onNavbar(){
+        session.setAttribute("hideNavbar",false);
+    }
+
+    private void offNavbar(){
+        session.setAttribute("hideNavbar",true);
+    }
     private String getPage(String page){
         Boolean authorised = (Boolean) session.getAttribute("inSystem");
         if (authorised!=null && authorised.equals(Boolean.TRUE)){
+            onNavbar();
             return "lol";
         } else {
+            offNavbar();
             return page;
         }
     }
 
     @GetMapping("/")
     public String get(){
-        return getPage("login");
+        onNavbar();
+        return "lol";
     }
 
     @GetMapping("/login")
     public String getLoginScreen(Model model){
+        model.addAttribute("ex","exxx");
         return getPage("login");
     }
 
@@ -52,29 +69,45 @@ public class AuthoriZer {
             @RequestParam(name = "fathername",required = false) String fathername,
             @RequestParam(name = "login",required = false) String log,
             @RequestParam(name = "password",required = false) String pass,
-            @RequestParam(name = "level",required = false) String level
+            @RequestParam(name = "role",required = false) String role
     ){
-        String message = SecurityTool.register(name,surname,fathername,log,pass,level);
+        String message = SecurityTool.register(name,surname,fathername,log,pass,role);
         if (message!=null){
             model.addAttribute("wrong",true);
             model.addAttribute("error",message);
+
             return "registry";
         } else {
             session.setAttribute("inSystem",Boolean.TRUE);
             session.setAttribute("username",log);
+            session.setAttribute("role",role);
             return "lol";
         }
     }
 
     @PostMapping("/login")
     public String login(@RequestParam(name="login",required = false) String log, @RequestParam(name="password",required = false) String pass, Model model){
-        if (log!=null && pass!=null && SecurityTool.authorise(log,pass)){
+        String role = SecurityTool.authorise(log,pass);
+        if (log!=null && pass!=null && role!=null){
             session.setAttribute("inSystem",Boolean.TRUE);
             session.setAttribute("username",log);
+            session.setAttribute("role",role);
+            configureNavbar(role);
             return "lol";
         } else {
             model.addAttribute("wrong",true);
             return "login";
         }
+    }
+
+    @GetMapping("/off")
+    public String off(){
+        Boolean inSystem = (Boolean) session.getAttribute("inSystem");
+        if (inSystem){
+            session.setAttribute("inSystem",Boolean.FALSE);
+            session.setAttribute("username",null);
+            session.setAttribute("role",null);
+        }
+        return "login";
     }
 }

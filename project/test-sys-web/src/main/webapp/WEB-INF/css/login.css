@@ -1,0 +1,45 @@
+        .loginSec {
+            padding-bottom: 200px;
+            width:100%;
+            padding-top: 90px;
+            padding-left: 34%;
+            padding-right: 34%;
+        }
+        .logContainer {
+               background: #fff;
+               border: 1px solid #dddddd;
+               padding: 0;
+               margin-left: 100px;
+               margin-right: 100px;
+        }
+        .headerH2 {
+            margin-bottom: 40px;
+        }
+        .form-group{
+            margin-left: 24%;
+            margin-right: 24%;
+            padding-bottom: 1%;
+        }
+        .btn-primary {
+            background: rgb(164, 35, 56);
+            color: #fff;
+            border: 1px solid #dddddd;
+        }
+        .btn-primary:hover{
+            background-color: rgb(203, 58, 81);
+            border: 1px solid #dddddd;
+            box-shadow: 0 0 0 3px #dddddd;
+        }
+        .btn-primary:focus{
+            background-color: rgb(203, 58, 81);
+            border: 1px solid #dddddd;
+        }
+        .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+            background-color: rgb(203, 58, 81);
+            border: 1px solid #dddddd;
+            color: #eee;
+        }
+        .formHolder{
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
