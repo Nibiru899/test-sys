@@ -2,30 +2,24 @@ package sequrity;
 
 import bdWorkers.BDWorker;
 import data.users.*;
-
 import org.jasypt.util.password.BasicPasswordEncryptor;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class SecurityTool {
 
-
     private static String encode(String pass) {
-        return pass;
-        //return new BasicPasswordEncryptor().encryptPassword(pass);
+        //return pass;
+        return new BasicPasswordEncryptor().encryptPassword(pass);
     }
 
     private static boolean checkPass(User user, String pass) {
         if (user == null){
             return false;
         }
-        return user.getPassword().getText().equals(pass);
-//        return new BasicPasswordEncryptor().checkPassword(pass, user.getPassword().getText());
+        //return user.getPassword().getText().equals(pass);
+        return new BasicPasswordEncryptor().checkPassword(pass, user.getPassword().getText());
     }
-
-
 
     public static void linkToSubject(Long subj,String login,boolean del) {
         BDWorker worker = new BDWorker();

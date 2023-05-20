@@ -1,6 +1,5 @@
 package root;
 
-import data.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
-public class AuthoriZer {
+public class Authoriser {
     @Autowired
     HttpSession session;
 
@@ -38,7 +37,7 @@ public class AuthoriZer {
         Boolean authorised = (Boolean) session.getAttribute("inSystem");
         if (authorised!=null && authorised.equals(Boolean.TRUE)){
             onNavbar();
-            return "lol";
+            return "nullPage";
         } else {
             offNavbar();
             return page;
@@ -48,7 +47,7 @@ public class AuthoriZer {
     @GetMapping("/")
     public String get(){
         onNavbar();
-        return "lol";
+        return "nullPage";
     }
 
     @GetMapping("/login")
@@ -81,7 +80,7 @@ public class AuthoriZer {
             session.setAttribute("inSystem",Boolean.TRUE);
             session.setAttribute("username",log);
             session.setAttribute("role",role);
-            return "lol";
+            return "nullPage";
         }
     }
 
@@ -93,11 +92,19 @@ public class AuthoriZer {
             session.setAttribute("username",log);
             session.setAttribute("role",role);
             configureNavbar(role);
-            return "lol";
+            return "nullPage";
         } else {
             model.addAttribute("wrong",true);
             return "login";
         }
+    }
+
+    @PostMapping("delAcc")
+    public String delete(@RequestParam(name="login",required = false) String log, @RequestParam(name="password",required = false) String pass, Model model){
+        if (Boolean.TRUE.equals(session.getAttribute("inSystem"))){
+            SecurityTool.delAcc(log,pass);
+        }
+        return "nullPage";
     }
 
     @GetMapping("/off")
